@@ -4,5 +4,26 @@
     "express": "^4.18.1",
     "graphql": "^16.5.0",
     "mongoose": "^6.4.0"
-  }
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  },
+  "name": "echo-chamber",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtpott/echo-chamber.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtpott/echo-chamber/issues"
+  },
+  "homepage": "https://github.com/mtpott/echo-chamber#readme",
+  "description": ""
 }
