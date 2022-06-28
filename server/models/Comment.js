@@ -1,5 +1,32 @@
 const { Schema, model } = require('mongoose');
 
+const ReplySchema = new Schema (
+    {
+        commentId: {
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId()
+        },
+        replyText: {
+            type: String,
+            required: true,
+            minlength: 1,
+            maxlength: 400
+        },
+        username: {
+            type: String,
+            required: true
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            //FORMAT TIMESTAMP FOR DATE
+        },
+    },
+    {
+        id: false
+    }
+)
+
 const CommentSchema = new Schema(
     {
         commentText: {
@@ -17,7 +44,7 @@ const CommentSchema = new Schema(
             type: String,
             required: true
         },
-        //REF TO REPLY SCHEMA; NESTED WITHIN COMMENT SCHEMA
+        replies: [ReplySchema],
     },
     {
         toJSON: {
