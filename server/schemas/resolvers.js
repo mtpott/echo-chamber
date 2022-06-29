@@ -9,8 +9,15 @@ const resolvers = {
         //get one user
         user: async (parent, { username }) => {
             return User.findOne({ username })
-        }
+        },
+        //get all comments by username
     },
+    //login user
+    //create user
+    //save album
+    //remove album
+    //add comment
+    //add reply
     Mutation: {
         addUser: async (parent, args) => {
             const user = await User.create(args);
