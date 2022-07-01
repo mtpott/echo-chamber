@@ -35,6 +35,9 @@ const UserSchema = new Schema(
 
 //AUTH FOR PASSWORD
 //virtual for comments
+UserSchema.virtual('commentsList').get(function() {
+    return this.comments.length;
+})
 
 const User = model('User', UserSchema);
 
