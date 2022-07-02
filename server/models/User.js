@@ -19,6 +19,7 @@ const UserSchema = new Schema(
             type: String,
             minlength: 6
         },
+        savedAlbums : [Album],
         comments: [
             {
                 type: Schema.Types.ObjectId,

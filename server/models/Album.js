@@ -2,6 +2,10 @@ const { Schema } = require('mongoose');
 
 const albumSchema = new Schema(
     {
+        albumId: {
+            type: String,
+            required: true
+        },
         albumTitle: {
             type: String,
             required: true

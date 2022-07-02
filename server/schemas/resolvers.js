@@ -3,9 +3,15 @@ const { User, Comment } = require('../models');
 
 const resolvers = {
     Query: {
-        //get all users
-        users: async () => {
-            return User.find()
+        //get me
+        me: async (parent, args, context) => {
+            if (context.user) {
+                const userData = await User.findOne({})
+                    .populate('savedAlbums');
+
+                return userData;
+            }
+            throw new AuthenticationError("You're not logged in.");
         },
         //get one user
         user: async (parent, { username }) => {
@@ -17,6 +23,23 @@ const resolvers = {
         }
     },
     Mutation: {
+        login: async (parent, { email, password}) => {
+            const user = await User.findOne({ email });
+
+            if (!user) {
+                throw new AuthenticationError('Wrong email or password!');
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Wrong email or password!');
+            }
+
+            //ADD TOKEN FROM AUTH MIDDLEWARE FUNCTIONALITY FOR USER AUTHENTICATION
+            //RETURN TOKEN AND USER
+            return user;
+        },
         addUser: async (parent, args) => {
             const user = await User.create(args);
             return user;
@@ -49,7 +72,8 @@ const resolvers = {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $push: { }},
+                    //PUSH TO SAVED ALBUMS ARRAY
+                    { $push: { savedAlbums: albumData }},
                     { new: true }
                 )
                 return updatedUser;

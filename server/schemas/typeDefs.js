@@ -36,13 +36,13 @@ type Comment {
 }
 
 type Query {
-        users: [User]
-        user(username: String!): User
-        albums: [Album]
+        me: User
         comments(username: String!): Comment
 }
 
+# LOGIN AND ADDUSER SHOULD RETURN AUTH INSTEAD OF USER
 type Mutation {
+    login(email: String!, password: String!): User
     addUser(username: String!, email: String!, password: String!): User
     addComment(username: String!, commentText: String!): Comment
     addReply(username: String!, replyText: String!): Comment

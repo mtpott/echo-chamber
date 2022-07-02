@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
     typeDefs,
     resolvers
+    //CONTEXT --> FOR AUTH MIDDLEWARE WHEN ESTABLISHED
 });
 
 const app = express();
@@ -26,6 +27,10 @@ const startApolloServer = async (typeDefs, resolvers) => {
     await server.start();
 
     server.applyMiddleware({ app });
+
+    // if (process.end.NODE_ENV === 'production') {
+    //     app.use(express.static(path.join(__dirname, '../client/build')));
+    // }
 
     db.once('open', () => {
         app.listen(PORT, () => {
