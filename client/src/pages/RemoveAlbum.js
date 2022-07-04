@@ -2,6 +2,9 @@ import React from 'react';
 import { REMOVE_ALBUM } from '../utils/mutations';
 import { GET_ME } from '../utils/queries';
 import { useQuery, useMutation } from '@apollo/client';
+
+import { removeAlbumId } from '../utils/localStorage';
+
 //REACT BOOTSTAP FOR FRAMEWORK?
 
 const MyAlbums = () => {
@@ -20,6 +23,7 @@ const handleRemoveAlbum = async (albumId) => {
                 variables: { albumId }
             });
             //REMOVE ALBUM FUNCTIONALITY
+            removeAlbumId(albumId);
         } catch (err) {
             console.error(err);
         }

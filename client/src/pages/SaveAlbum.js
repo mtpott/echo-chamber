@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { SAVE_ALBUM } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 
+import { saveAlbumIds, getSavedAlbumIds } from '../utils/localStorage';
+
 //IMPORT AUTH FOR TOKEN TO SAVE ALBUM
 
 
@@ -9,11 +11,11 @@ const SavedAlbum = () => {
     const [saveAlbum, { error }] = useMutation(SAVE_ALBUM);
 
     //SAVE ALBUMID TO STATE (local storage functionality)
-    //const [savedAlbumId, setSavedAlbumId] = useState()
+    const [savedAlbumId, setSavedAlbumId] = useState(getSavedAlbumIds());
 
-    // useEffect(() => {
-    //     return () => saveAlbumId(savedAlbumId)
-    // });
+    useEffect(() => {
+        return () => saveAlbumId(savedAlbumId);
+    });
 
 
     const handleSaveAlbum = async(albumId) => {
