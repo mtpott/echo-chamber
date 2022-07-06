@@ -1,12 +1,13 @@
 // import logo from './logo.svg';
 import "./App.css";
-import Album from "./components/Album";
+// import Album from "./components/Album";
 import "bootstrap/dist/css/bootstrap.css";
 // import { Navbar, Nav, Container } from 'react-bootstrap'
 import Navigation from "./components/Nav";
 import BgImage from "./components/Image";
 // import AlbumCards from "./components/AlbumCards";
 import StaticView from "./components/Static";
+import Foot from "./components/Footer";
 
 
 
@@ -18,9 +19,16 @@ function App() {
       {/* <AlbumCards/> */}
       <StaticView/>
 
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+
+      <Foot/>
+
       
-      <h1>api call</h1>
-      <Album />
+      {/* <h1>api call</h1>
+      <Album /> */}
     </div>
   );
 }
