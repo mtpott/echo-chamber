@@ -1,6 +1,57 @@
+//GET ME
+export const getMyAlbums = (token) => {
+	return fetch('/api/users/me', {
+		headers: {
+			'Content-Type': 'application/json',
+			authorization: `Bearer ${token}`,
+		}
+	});
+};
+
+//ADD NEW USER
+export const addUser = (userData) => {
+	return fetch('/api/users', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(addUser),
+	});
+};
+
+//LOGIN USER
+export const loginUser = (userData) => {
+	return fetch('/api/users/login', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(userData),
+	});
+};
+
 //PUT REQUEST TO SAVE ALBUM TO DB
+export const saveAlbum = (albumData, token) => {
+	return fetch('/api/users', {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json',
+			// authorization: `Bearer ${token}`,
+		},
+		body: JSON.stringify(albumData),
+	});
+};
 
 // PUT REQUEST TO DELETE ALBUM FROM DB
+export const removeAlbum = (albumId, token) => {
+	return fetch(`/api/users/albums/${albumId}`, {
+		method: 'DELETE',
+		headers: {
+			authorization: `Bearer ${token}`
+		}
+	});
+};
+
 const options = {
 	method: 'GET',
 	headers: {
