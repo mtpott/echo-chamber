@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //GET ME
 export const getMyAlbums = (token) => {
 	return fetch('/api/users/me', {
@@ -52,6 +53,11 @@ export const removeAlbum = (albumId, token) => {
 	});
 };
 
+=======
+//PUT REQUEST TO SAVE ALBUM TO DB
+
+// PUT REQUEST TO DELETE ALBUM FROM DB
+>>>>>>> feature/components
 const options = {
 	method: 'GET',
 	headers: {
