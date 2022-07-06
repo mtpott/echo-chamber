@@ -1,8 +1,4 @@
 // import logo from './logo.svg';
-<<<<<<< HEAD
-import './App.css';
-import Album from './components/Album';
-=======
 import "./App.css";
 // import Album from "./components/Album";
 import "bootstrap/dist/css/bootstrap.css";
@@ -14,15 +10,10 @@ import StaticView from "./components/Static";
 import Foot from "./components/Footer";
 
 
->>>>>>> feature/components
 
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
-      <h1>api call</h1>
-      <Album />
-=======
       <Navigation/>
       <BgImage/>
       {/* <AlbumCards/> */}
@@ -38,7 +29,6 @@ function App() {
       
       {/* <h1>api call</h1>
       <Album /> */}
->>>>>>> feature/components
     </div>
   );
 }
