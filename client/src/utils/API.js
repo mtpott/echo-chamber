@@ -9,65 +9,29 @@ const options = {
 	}
 };
 
+let oneAlbumData = [];
 
+async function formatAlbumData(data) {
+	for (let i = 0; i < data.albums.items.length; i++) {
+		// console.log(data.albums.items[i]);
+		let albumName = data.albums.items[i].data.name;
+		let artist = data.albums.items[i].data.artists.items[0].profile.name;
+		let albumCover = data.albums.items[i].data.coverArt.sources[0];
+		let albumId = data.albums.items[i].data.uri;
 
+		const oneAlbum = {
+			albumName,
+			artist,
+			albumCover,
+			albumId
+		};
+		oneAlbumData.push(oneAlbum);
 
-
+		console.log(oneAlbum);
+	}
+}
 
 export async function getAlbumData() {
-  // console.log('button clicked, function called!');
-
-  const response = fetch('https://spotify23.p.rapidapi.com/albums/?ids=3IBcauSj5M2A6lTeffJzdv', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
-
-  console.log(response);
-
-};
-
-
-//get artist albums
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '6381a2b4d1msh6a99bf22aead686p1fa121jsnfa16d82c3539',
-// 		'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-// 	}
-// };
-
-// fetch('https://spotify23.p.rapidapi.com/artist_albums/?id=2w9zwq3AktTeYYMuhMjju8&offset=0&limit=100', options)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
-
-
-
-//user profile
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '6381a2b4d1msh6a99bf22aead686p1fa121jsnfa16d82c3539',
-// 		'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-// 	}
-// };
-
-// fetch('https://spotify23.p.rapidapi.com/user_profile/?id=nocopyrightsounds&playlistLimit=10&artistLimit=10', options)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
-
-
-//user followers
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '6381a2b4d1msh6a99bf22aead686p1fa121jsnfa16d82c3539',
-// 		'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-// 	}
-// };
-
-// fetch('https://spotify23.p.rapidapi.com/user_followers/?id=nocopyrightsounds', options)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
+  fetch('https://spotify23.p.rapidapi.com/search/?q=%25a%25&type=albums&offset=100&limit=10&numberOfTopResults=5', options)
+	.then(response => { response.json().then(data => { formatAlbumData(data)})})
+}
