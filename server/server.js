@@ -28,9 +28,9 @@ const startApolloServer = async (typeDefs, resolvers) => {
 
     server.applyMiddleware({ app });
 
-    // if (process.end.NODE_ENV === 'production') {
-    //     app.use(express.static(path.join(__dirname, '../client/build')));
-    // }
+    if (process.end.NODE_ENV === 'production') {
+        app.use(express.static(path.join(__dirname, '../client/build')));
+    }
 
     db.once('open', () => {
         app.listen(PORT, () => {
